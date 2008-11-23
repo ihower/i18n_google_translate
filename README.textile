@@ -1,41 +1,41 @@
 h1. Rails i18n Google Translate Backend
 
-  Rails I18n is not painful anymore. Let's google translate help you do it.
+Rails I18n is not painful anymore. Let's google translate help you do it.
 
 h2. Usage Example
 
 h3. environment.rb
 
-<code>
+<pre>
     I18n.backend = I18n::Backend::GoogleTranslate.new
     I18n.default_locale = 'en'
     LOCALES_AVAILABLE = I18n::Backend::GoogleTranslate::GOOGLE_LANGUAGES.map.sort
-</code>
+</pre>
 
 h3. application.rb
 
-<code>
+<pre>
   before_filter :set_locale
 
   def set_locale
     session[:locale] = params[:locale] if params[:locale]
     I18n.locale = session[:locale] || I18n.default_locale
   end
-</code>
+</pre>
 
 h3. view example
 
-<code>
-  &lt;%= I18n.t "Login" %>
-  &lt;%= I18n.l Time.now %>
+<pre>
+  <%= I18n.t "Login" %>
+  <%= I18n.l Time.now %>
   
-  &lt;% form_tag '', :method => :get do %>
+  <% form_tag '', :method => :get do %>
     <%= select_tag("locale", options_for_select(LOCALES_AVAILABLE, I18n.locale), { :index => nil, :onchange => 'this.form.submit()'}) %>
-  &lt;% end %>
-</code>
+  <% end %>
+</pre>
   
 h2. Author & License
 
-Author: Wen-Tien Chang &lt;<ihower@handlino.com>
-Copyright (c) 2008 Handlino Inc.
-Licensed under the MIT: http://www.opensource.org/licenses/mit-license.php
+* Author: "Wen-Tien Chang":mailto:ihower@handlino.com
+* Copyright (c) 2008 Handlino Inc.
+* Licensed under the MIT: http://www.opensource.org/licenses/mit-license.php
