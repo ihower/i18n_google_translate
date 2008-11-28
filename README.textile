@@ -1,6 +1,14 @@
 h1. Rails i18n Google Translate Backend
 
-Rails I18n is not painful anymore. Let's google translate help you do it.
+I18n is not painful anymore. Let’s google translate help you do it.
+
+h2. Install
+
+<pre>
+    sudo gem install htmlentities
+    sudo gem install json
+    script/plugin install git://github.com/ihower/i18n_google_translate.git
+</pre>
 
 h2. Usage Example
 
@@ -8,7 +16,7 @@ h3. environment.rb
 
 <pre>
     I18n.backend = I18n::Backend::GoogleTranslate.new
-    I18n.default_locale = 'en'
+    I18n.default_locale = 'en' # your source language
     LOCALES_AVAILABLE = I18n::Backend::GoogleTranslate::GOOGLE_LANGUAGES.map.sort
 </pre>
 
